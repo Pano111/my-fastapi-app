@@ -9,12 +9,11 @@ class Word(BaseModel):
 @app.post("/webhook")
 def get_word(payload: Word):
    
-    wordOriginal = payload.data
+    original_text = payload.data
+    
+    
+    char_list = list(original_text)
+    char_list.sort()
 
-    wordArray = list(wordOriginal)
-
-    wordArray.sort()
-
-    return {
-        "word": wordArray    
-    }
+    
+    return {"word": char_list}
